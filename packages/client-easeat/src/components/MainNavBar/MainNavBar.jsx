@@ -9,7 +9,7 @@ import './MainNavBar.css';
 class MainNavBar extends Component{
     render() {
         return (      
-        <Navbar bg="white" variant="dark" >
+        <Navbar className="navbar" variant="dark" >
         <Container >
           <Navbar.Brand href="#home" className="mx-auto">
             <img
