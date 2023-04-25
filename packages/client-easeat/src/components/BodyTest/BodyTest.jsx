@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import easeatLogoCropped from '../../assets/easeat_logo_cropped.png';
-import './BodyTest.css';
+import '../../components/BodyTest/BodyTest.css';
 
 
 class BodyTest extends Component{

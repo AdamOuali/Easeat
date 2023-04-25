@@ -1,5 +1,6 @@
 import React from 'react'
 import easeatLogoCropped from '../../assets/easeat_logo_cropped.png'
+import { NavLink } from 'react-router-dom'
 
 export default function Sidebar() {
     return (
@@ -15,16 +16,18 @@ export default function Sidebar() {
                     </div>
                     <div className="relative"></div>
                     <div className="flex-1">
-                        <ul className="pt-2 pb-4 space-y-1 text-sm">
+                        <ul className="pt-2 pb-4 space-y-1 text-xl">
                             <li className="rounded-sm">
-                                <a
-                                    href="#"
-                                    className="flex items-center p-2 space-x-3 rounded-md"
-                                >
-                                    <span className="text-gray-100">
-                                        Accueil dashboard
-                                    </span>
-                                </a>
+                                <NavLink to={'/login'}>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 space-x-3 rounded-md"
+                                    >
+                                        <span className="text-gray-100">
+                                            Accueil dashboard
+                                        </span>
+                                    </a>
+                                </NavLink>
                             </li>
                             <li className="rounded-sm">
                                 <a
@@ -70,6 +73,11 @@ export default function Sidebar() {
                     </div>
                 </div>
             </div>
+
+
+
+{/* CI DESSOUS LA VUE DES DIFFÉRENTS ÉLÉMENTS À METTRE DANS UN AUTRE COMPOSANTS POUR CRÉER UNE VUE */}
+{/*             
             <div className="container mx-auto mt-12 p-8">
                 <div className="grid grid-cols-1 gap-6 mb-6 ">
                     <div className="w-full h-52 px-4 py-5 bg-white rounded-lg shadow overflow-auto">
@@ -121,7 +129,8 @@ export default function Sidebar() {
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                         <p>Température frigo : 5°C</p>
                                     </td>
-                                </tr>                                <tr class="bg-gray-100 border-b">
+                                </tr>{' '}
+                                <tr class="bg-gray-100 border-b">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         <p>12:01</p>
                                     </td>
@@ -131,7 +140,8 @@ export default function Sidebar() {
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                         <p>Température frigo : 5°C</p>
                                     </td>
-                                </tr>                                <tr class="bg-gray-100 border-b">
+                                </tr>{' '}
+                                <tr class="bg-gray-100 border-b">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         <p>12:01</p>
                                     </td>
@@ -141,7 +151,8 @@ export default function Sidebar() {
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                         <p>Température frigo : 5°C</p>
                                     </td>
-                                </tr>                                <tr class="bg-gray-100 border-b">
+                                </tr>{' '}
+                                <tr class="bg-gray-100 border-b">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         <p>12:01</p>
                                     </td>
@@ -151,7 +162,8 @@ export default function Sidebar() {
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                         <p>Température frigo : 5°C</p>
                                     </td>
-                                </tr>                                <tr class="bg-gray-100 border-b">
+                                </tr>{' '}
+                                <tr class="bg-gray-100 border-b">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                         <p>12:01</p>
                                     </td>
@@ -165,33 +177,9 @@ export default function Sidebar() {
                             </tbody>
                         </table>
                     </div>
-
-                    {/* <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                        <div className="text-sm font-medium text-gray-500 truncate">
-                            Total users
-                        </div>
-                        <div className="mt-1 text-3xl font-semibold text-gray-900">
-                            12,00
-                        </div>
-                    </div>
-                    <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                        <div className="text-sm font-medium text-gray-500 truncate">
-                            Total Profit
-                        </div>
-                        <div className="mt-1 text-3xl font-semibold text-gray-900">
-                            $ 450k
-                        </div>
-                    </div>
-                    <div className="w-full px-4 py-5 bg-white rounded-lg shadow">
-                        <div className="text-sm font-medium text-gray-500 truncate">
-                            Total Orders
-                        </div>
-                        <div className="mt-1 text-3xl font-semibold text-gray-900">
-                            20k
-                        </div>
-                    </div> */}
                 </div>
             </div>
-        </div>
+        </div> */}
+    </div>
     )
 }
