@@ -1,0 +1,9 @@
+label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  input[type="checkbox"] {
+    display: inline-block;
+  }
+  
