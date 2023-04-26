@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #f8f9fa;
+}
+
+html, body {
+    height: 100%;
+}
+.fill-height {
+    min-height: 100%;
+    height:auto !important; /* cross-browser */
+    height: 100%; /* cross-browser */
+}
+
+.test{
+    flex-grow: 1;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+}
