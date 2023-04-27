@@ -35,7 +35,7 @@ function profileForm() {
   return (
     <>
          <SideBar />
-         <div className="flex col-span-3 h-screen bg-gray-800 shadow">
+         <div className="flex col-span-3 h-screen bg-white shadow">
             {/* DIV DU DESSOUS A METTRE POUR ETRE DANS LE BODY */}
                 <div className="container mx-auto mt-12 p-8">
           <form onSubmit={handleSubmit}>
