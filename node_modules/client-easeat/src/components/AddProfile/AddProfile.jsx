@@ -33,52 +33,62 @@ function profileForm() {
   };
 
   return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">Nom </label>
-          <input className="px-3 py-2 border border-gray-800 rounded-md focus:border-indigo-500 " type="text" id="lastName" value={lastName} onChange={(event) => setLastName(event.target.value)} />
-        </div>
-        <div>
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">Prénom </label>
-          <input className="px-3 py-2 border border-gray-800 rounded-md focus:border-indigo-500" type="text" id="firstName" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
-        </div>
-        
-        {/* Temps pour cuisiner */}
-        <div>
-          <legend className="block text-gray-700 text-sm font-bold mb-2" >Avez-vous du temps pour cuisiner ?</legend>
-          <input type="checkbox" id="checkbox1" checked={isCheckedTime} onChange={(event) => setIsCheckedTime(event.target.checked)} />
-          <label htmlFor="checkbox1">
-            <img src={TimeToCook} alt="Time to cook" />
-          </label>
-    <input type="checkbox" id="checkbox2" checked={isCheckedRegular} onChange={(event) => setIsCheckedRegular(event.target.checked)} />
-    <label htmlFor="checkbox2">
-            <img src={RegularTimeToCook} alt="Regular time to cook" />
-          </label>
-    <input type="checkbox" id="checkbox3" checked={isCheckedNoTime} onChange={(event) => setIsCheckedNoTime(event.target.checked)} />
-    <label htmlFor="checkbox3">
-            <img src={NoTimeToCook} alt="No time to cook" />
-          </label>
-        </div>
-        
-  {/* Type d'alimentation */}
-        <div>
-          <legend className="block text-gray-700 text-sm font-bold mb-2" >Type d'alimentation</legend>
-          <input type="checkbox" id="checkbox4" checked={isCheckedVege} onChange={(event) => setIsCheckedVege(event.target.checked)} />
-          <label htmlFor="checkbox4">
-            <img src={Vegetables} alt="Vegetarien" />
-          </label>
-    <input type="checkbox" id="checkbox5" checked={isCheckedMeat} onChange={(event) => setIsCheckedMeat(event.target.checked)} />
-    <label htmlFor="checkbox5">
-            <img src={Meat} alt="Omnivore" />
-          </label>
-    <input type="checkbox" id="checkbox6" checked={isCheckedGastro} onChange={(event) => setIsCheckedGastro(event.target.checked)} />
-    <label htmlFor="checkbox6">
-            <img src={gastronomy} alt="Gastronomie" />
-          </label>
-        </div>
+    <>
+         <SideBar />
+         <div className="flex col-span-3 h-screen bg-gray-800 shadow">
+            {/* DIV DU DESSOUS A METTRE POUR ETRE DANS LE BODY */}
+                <div className="container mx-auto mt-12 p-8">
+          <form onSubmit={handleSubmit}>
+            
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">Nom </label>
+              <input className="px-3 py-2 border border-gray-800 rounded-md focus:border-indigo-500 " type="text" id="lastName" value={lastName} onChange={(event) => setLastName(event.target.value)} />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">Prénom </label>
+              <input className="px-3 py-2 border border-gray-800 rounded-md focus:border-indigo-500" type="text" id="firstName" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
+            </div>
+                    
+              {/* Temps pour cuisiner */}
+            <div>
+              <legend className="block text-gray-700 text-sm font-bold mb-2" >Avez-vous du temps pour cuisiner ?</legend>
+                <input type="checkbox" id="checkbox1" checked={isCheckedTime} onChange={(event) => setIsCheckedTime(event.target.checked)} />
+                <label htmlFor="checkbox1">
+                  <img src={TimeToCook} alt="Time to cook" />
+                </label>
+                  <input type="checkbox" id="checkbox2" checked={isCheckedRegular} onChange={(event) => setIsCheckedRegular(event.target.checked)} />
+                  <label htmlFor="checkbox2">
+                    <img src={RegularTimeToCook} alt="Regular time to cook" />
+                  </label>
+                  <input type="checkbox" id="checkbox3" checked={isCheckedNoTime} onChange={(event) => setIsCheckedNoTime(event.target.checked)} />
+                  <label htmlFor="checkbox3">
+                    <img src={NoTimeToCook} alt="No time to cook" />
+                  </label>
+            </div>
+              
+            {/* Type d'alimentation */}
+            <div>
+              <legend className="block text-gray-700 text-sm font-bold mb-2" >Type d'alimentation</legend>
+              <input type="checkbox" id="checkbox4" checked={isCheckedVege} onChange={(event) => setIsCheckedVege(event.target.checked)} />
+              <label htmlFor="checkbox4">
+                <img src={Vegetables} alt="Vegetarien" />
+              </label>
+              <input type="checkbox" id="checkbox5" checked={isCheckedMeat} onChange={(event) => setIsCheckedMeat(event.target.checked)} />
+              <label htmlFor="checkbox5">
+                <img src={Meat} alt="Omnivore" />
+              </label>
+              <input type="checkbox" id="checkbox6" checked={isCheckedGastro} onChange={(event) => setIsCheckedGastro(event.target.checked)} />
+              <label htmlFor="checkbox6">
+                <img src={gastronomy} alt="Gastronomie" />
+              </label>
+            </div>
 
-        <button className="mt-4" type="submit">Envoyer</button>
-      </form>
+            <button className="mt-4" type="submit">Envoyer</button>
+            
+          </form>
+          </div>
+          </div>
+    </>
   );
 }
 
