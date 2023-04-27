@@ -13,9 +13,13 @@ function App() {
             <div className="grid grid-cols-4">
                 <BrowserRouter>
                     <Routes>
+                        {/* <Route path="/" element={<DashboardHome />} /> */}
                         <Route path="/" element={<DashboardHome />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route path='/dashboard' element={<DashboardHome />} />
+                        <Route path="/profils" element={<Sidebar />} />
                         <Route path="/calendrier" element={<Calendrier />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/parametres" element={<Error404 />} />
                         <Route path="*" element={<Error404 />} />
                     </Routes>
                 </BrowserRouter>
