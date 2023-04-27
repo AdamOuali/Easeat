@@ -19,7 +19,7 @@ function App() {
                         {/* <Route path="/" element={<DashboardHome />} /> */}
                         <Route path="/" element={<DashboardHome />} />
                         <Route path='/dashboard' element={<DashboardHome />} />
-                        <Route path="/profils" element={<Sidebar />} />
+                        <Route path="/profils" element={<AddProfile />} />
                         <Route path="/calendrier" element={<Calendrier />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/parametres" element={<Error404 />} />
