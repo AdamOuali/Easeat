@@ -7,7 +7,7 @@ import AddProfile from './components/AddProfile/AddProfile.jsx'
 import Login from './components/Login/Login.jsx'
 import Sidebar from './components/Sidebar/Sidebar.jsx'
 import Error404 from './pages/Error404'
-import Calendrier from './pages/Calendrier'
+import Agenda from './pages/Agenda'
 import DashboardHome from './pages/DashboardHome'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                         <Route path="/" element={<DashboardHome />} />
                         <Route path='/dashboard' element={<DashboardHome />} />
                         <Route path="/profils" element={<AddProfile />} />
-                        <Route path="/calendrier" element={<Calendrier />} />
+                        <Route path="/agenda" element={<Agenda />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/parametres" element={<Error404 />} />
                         <Route path="*" element={<Error404 />} />

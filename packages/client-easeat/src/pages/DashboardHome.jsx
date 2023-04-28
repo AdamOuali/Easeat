@@ -52,14 +52,14 @@ const DashboardHome = () => {
             {/* DIV DU DESSOUS A METTRE POUR ETRE DANS LE BODY */}
             <div className="flex col-span-3 h-screen bg-white shadow">
                 <div className="container mx-auto mt-12 p-8">
-                    <div className="grid grid-cols-1 gap-6 mb-6 ">
-                        <div className="w-full h-52 bg-white rounded-lg shadow overflow-auto">
+                    <div className="flex-col items-center justify-center">
+                        {/* <div className="w-full h-52 bg-white rounded-lg shadow overflow-auto"> */}
                             <img
-                                className="object-cover object-center"
+                                className="object-cover object-center rounded-lg"
                                 src={imgFrigo}
                                 alt="Image frigo actuelle"
                             />
-                        </div>
+                        {/* </div> */}
                         <div className="w-full h-96 px-4 py-5 bg-white rounded-lg shadow overflow-auto">
                             <table className="w-full text-sm text-left">
                                 <thead className="text-xs uppercase">

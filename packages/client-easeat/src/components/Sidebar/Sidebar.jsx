@@ -41,10 +41,10 @@ export default function Sidebar() {
                             </li>
                             {/* CALENDRIER */}
                             <li className="rounded-sm py-5">
-                                <NavLink to={'/calendrier'}>
+                                <NavLink to={'/agenda'}>
                                     <span className="text-primary flex items-center">
                                         <BsCalendarCheck className="inline-block mr-2" />
-                                        Calendrier
+                                        Agenda
                                     </span>
                                 </NavLink>{' '}
                             </li>
