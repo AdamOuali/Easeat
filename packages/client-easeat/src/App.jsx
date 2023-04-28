@@ -18,7 +18,7 @@ function App() {
             <div className="grid grid-cols-4">
                 <BrowserRouter>
                     <Routes>
-                        {/* <Route path="/" element={<DashboardHome />} /> */}
+                        {/* ROUTES PROD */}
                         <Route path="/" element={<DashboardHome />} />
                         <Route path='/dashboard' element={<DashboardHome />} />
                         <Route path="/profils" element={<Profiles />} />
