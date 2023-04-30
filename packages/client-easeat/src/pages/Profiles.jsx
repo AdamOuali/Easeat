@@ -7,6 +7,7 @@ import '../index.css'
 const Profiles = () => {
     const [profileList, setProfileList] = useState([])
 
+    // Récupérer la liste des profils
     useEffect(() => {
         fetch('http://localhost:3000/api/users')
             .then((response) => response.json())
@@ -15,6 +16,8 @@ const Profiles = () => {
             })
     }, [])
 
+
+    // Supprimer un profil
     const handleDelete = (id) => {
         let myHeaders = new Headers()
         myHeaders.append('Content-Type', 'application/json')
@@ -33,7 +36,7 @@ const Profiles = () => {
             .then((data) => {
                 console.log(data)
                 // Vérifier si l'utilisateur a été supprimé avec succès
-                if (data && data.message === `Utilisateur (id = ${id}) supprimé`) {
+                if (data) {
                     // Mettre à jour la liste des profils
                     const updatedProfileList = profileList.filter(
                         (profile) => profile.id !== id
