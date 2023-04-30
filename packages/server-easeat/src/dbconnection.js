@@ -9,25 +9,6 @@ const connection = mysql.createConnection({
 	database: "easeatdb",
 });
 
-// Ouvrir la connexion à la base de données
-connection.connect(function (err) {
-	if (err) throw err;
-	connection.query("SELECT * FROM ingredients", function (err, result, fields) {
-		if (err) throw err;
-		// console.log(result);
-	});
-});
-
-// Fermer la connexion à la base de données lorsque vous avez terminé
-// connection.end((err) => {
-// 	if (err) {
-// 		console.error(
-// 			"Erreur lors de la fermeture de la connexion à la base de données : ",
-// 			err
-// 		);
-// 		return;
-// 	}
-// 	console.log("Connexion à la base de données MySQL fermée");
-// });
+console.log("Connexion à la base de données réussie !");
 
 module.exports = connection;

@@ -1,45 +1,72 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CardProfile from '../components/CardProfile/CardProfile'
 import CardProfileAdd from '../components/CardProfileAdd/CardProfileAdd'
 import Sidebar from '../components/Sidebar/Sidebar'
 import '../index.css'
 
-const existingProfiles = [
-    {
-        key: 1,
-        name: 'Léonie',
-        imageUrl: 'https://i.imgur.com/8Km9tLL.jpg',
-    },
-    {
-        key: 2,
-        name: 'Adam',
-        imageUrl: 'https://i.imgur.com/8Km9tLL.jpg',
+const Profiles = () => {
+    const [profileList, setProfileList] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/users')
+            .then((response) => response.json())
+            .then((data) => {
+                setProfileList(data)
+            })
+    }, [])
+
+    const handleDelete = (id) => {
+        let myHeaders = new Headers()
+        myHeaders.append('Content-Type', 'application/json')
+        let bodyToSend = JSON.stringify({
+            "id": id
+        })
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: bodyToSend,
+            redirect: 'follow'
+        }
+    
+        fetch(`http://localhost:3000/api/users/delete`, requestOptions)
+            .then((response) => response.json()) // Ajout de la méthode json() ici
+            .then((data) => {
+                console.log(data)
+                // Vérifier si l'utilisateur a été supprimé avec succès
+                if (data && data.message === `Utilisateur (id = ${id}) supprimé`) {
+                    // Mettre à jour la liste des profils
+                    const updatedProfileList = profileList.filter(
+                        (profile) => profile.id !== id
+                    )
+                    setProfileList(updatedProfileList)
+                } else {
+                    console.error('Erreur lors de la suppression de l\'utilisateur')
+                }
+            })
+            .catch((error) => console.error(error))
     }
 
-]
-
-const Profiles = () => {
     return (
         <>
             <Sidebar />
             <div className="flex col-span-3 h-screen bg-white shadow">
-                <div className="flex flex-col w-full mx-auto items-center justify-center">
-                    {existingProfiles.map((profile) => {
+                <div className="flex flex-wrap w-full mx-auto items-center justify-center">
+                    {profileList.map((profile) => {
                         return (
                             <CardProfile
-                                key={profile.key}
-                                name={profile.name}
-                                imageUrl={profile.imageUrl}
+                                key={profile.id}
+                                id={profile.id}
+                                name={profile.nom}
+                                imageUrl={profile.image}
+                                onDelete={handleDelete}
                             />
                         )
                     })}
-                    <CardProfileAdd/>
+                    <CardProfileAdd />
                 </div>
             </div>
         </>
     )
 }
-
-
 
 export default Profiles

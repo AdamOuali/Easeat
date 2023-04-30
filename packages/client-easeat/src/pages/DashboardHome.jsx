@@ -1,65 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import { NavLink } from 'react-router-dom'
 import imgFrigo from '../assets/img-frigo-1.jpg'
 
-
-function checkColorOfAlert(alertType){
-    if(alertType === 'Alerte'){
+function checkColorOfAlert(alertType) {
+    if (alertType === 'Alerte') {
         return 'bg-red-500'
-    } else if(alertType === 'Warning'){
+    } else if (alertType === 'Warning') {
         return 'bg-yellow-500'
     } else {
         return 'bg-green-500'
     }
 }
+
+function formatDateString(dateString) {
+    const dateObj = new Date(dateString);
+    const year = dateObj.getFullYear();
+    const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+    const day = ('0' + dateObj.getDate()).slice(-2);
+    return day + '-' + month + '-' + year;
+  }
+
+  
 const DashboardHome = () => {
-    const alerts = [
-        {
-            key: 1,
-            type: 'Check',
-            message: 'Arrêt du frigo confirmé pour début de vacances',
-            date: '12:01 - 27/04/2023',
-        },
-        {
-            key: 2,
-            type: 'Alerte',
-            message: 'Température frigo',
-            date: '12:01 - 27/04/2023',
-        },
-        {
-            key: 3,
-            type: 'Warning',
-            message: 'Plus d\'oranges',
-            date: '12:01 - 27/04/2023',
-        },
-        {
-            key: 4,
-            type: 'Alerte',
-            message: 'Température frigo',
-            date: '12:01 - 27/04/2023',
-        },
-        {
-            key: 5,
-            type: 'Check',
-            message: 'Arrêt du frigo confirmé pour début de vacances',
-            date: '12:01 - 27/04/2023',
-        },
-    ]
+    const [alertsList, setAlertsList] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/logs')
+            .then((response) => response.json())
+            .then((data) => {
+                setAlertsList(data);
+            });
+    }, []);
+
     return (
         <>
             <Sidebar />
-            {/* DIV DU DESSOUS A METTRE POUR ETRE DANS LE BODY */}
             <div className="flex col-span-3 h-screen bg-white shadow">
                 <div className="container mx-auto mt-12 p-8">
                     <div className="flex-col items-center justify-center">
-                        {/* <div className="w-full h-52 bg-white rounded-lg shadow overflow-auto"> */}
-                            <img
-                                className="object-cover object-center rounded-lg"
-                                src={imgFrigo}
-                                alt="Image frigo actuelle"
-                            />
-                        {/* </div> */}
+                        <img
+                            className="object-cover object-center rounded-lg"
+                            src={imgFrigo}
+                            alt="Image frigo actuelle"
+                        />
                         <div className="w-full h-96 px-4 py-5 bg-white rounded-lg shadow overflow-auto">
                             <table className="w-full text-sm text-left">
                                 <thead className="text-xs uppercase">
@@ -76,16 +60,22 @@ const DashboardHome = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {alerts.map((alert) => (
+                                    {alertsList.map((alert) => (
                                         <tr
                                             className="bg-white border-b "
-                                            key={alert.key}
+                                            key={alert.id}
                                         >
                                             <td className="px-6 py-4 ">
-                                                {alert.date}
+                                                {formatDateString(alert.date)} - {alert.heure}
                                             </td>
                                             <td className="px-6 py-4">
-                                                <span className={`rounded-md p-2 ${checkColorOfAlert(alert.type)}`}> {alert.type}</span>
+                                                <span
+                                                    className={`rounded-md p-2 ${checkColorOfAlert(
+                                                        alert.type_information
+                                                    )}`}
+                                                >
+                                                    {alert.type_information}
+                                                </span>
                                             </td>
                                             <td className="px-6 py-4">
                                                 {alert.message}
