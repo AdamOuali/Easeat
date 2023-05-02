@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"cd ./packages/server-easeat && node ./src/index.js\" \"cd ./packages/client-easeat/ && npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "packages/**",
-    "server-easeat"
+    "packages/**"
   ],
   "dependencies": {
+    "concurrently": "^8.0.1",
     "express": "^4.18.2"
   },
   "devDependencies": {
