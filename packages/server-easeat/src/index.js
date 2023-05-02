@@ -11,11 +11,13 @@ app.use(cors());
 // Import routes
 const usersRoutes = require("./users");
 const logsRoutes = require("./logs");
+const imagesRoutes = require("./images");
 
 // Route pour récupérer tous les utilisateurs
 app.use(express.json());
 app.use("/api/users", usersRoutes);
 app.use("/api/logs", logsRoutes);
+app.use("/api/images", imagesRoutes);
 
 app.listen(port, () => {
 	console.log(`Backend en écoute sur le port : ${port}`);

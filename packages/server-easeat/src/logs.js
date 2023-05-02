@@ -11,13 +11,6 @@ router.get("/", (req, res) => {
 	});
 });
 
-// // POST - Ajouter des logs
-// "id": 34,
-// "date": "2023-04-28T22:00:00.000Z",
-// "heure": "08:15:00",
-// "type_information": "Alerte",
-// "message": "Le taux d'humidité est de 55%",
-// "proprietaire_id": 13
 router.post("/add", (req, res) => {
 	const date = req.body.date;
 	const heure = req.body.heure;

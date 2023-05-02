@@ -15,34 +15,41 @@ function checkColorOfAlert(alertType) {
 }
 
 function formatDateString(dateString) {
-    const dateObj = new Date(dateString);
-    const year = dateObj.getFullYear();
-    const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
-    const day = ('0' + dateObj.getDate()).slice(-2);
-    return day + '-' + month + '-' + year;
-  }
+    const dateObj = new Date(dateString)
+    const year = dateObj.getFullYear()
+    const month = ('0' + (dateObj.getMonth() + 1)).slice(-2)
+    const day = ('0' + dateObj.getDate()).slice(-2)
+    return day + '-' + month + '-' + year
+}
 
-  
 const DashboardHome = () => {
     const [alertsList, setAlertsList] = useState([])
+    const [randomImage, setRandomImage] = useState('')
 
     useEffect(() => {
+        fetch('http://localhost:3000/api/images')
+            .then((response) => response.json())
+            .then((data) => {
+                const randomIndex = Math.floor(Math.random() * data.length)
+                setRandomImage(data[randomIndex].lien)
+            })
+
         fetch('http://localhost:3000/api/logs')
             .then((response) => response.json())
             .then((data) => {
-                setAlertsList(data);
-            });
-    }, []);
+                setAlertsList(data)
+            })
+    }, [])
 
     return (
         <>
             <Sidebar />
-            <div className="flex col-span-3 h-screen bg-white shadow">
+            <div className="flex col-span-3 bg-white shadow">
                 <div className="container mx-auto mt-12 p-8">
                     <div className="flex-col items-center justify-center">
                         <img
-                            className="object-cover object-center rounded-lg"
-                            src={imgFrigo}
+                            className="object-cover object-center rounded-lg max-h-[400px] mx-auto"
+                            src={randomImage}
                             alt="Image frigo actuelle"
                         />
                         <div className="w-full h-96 px-4 my-12 bg-white rounded-lg shadow overflow-auto">
@@ -67,7 +74,8 @@ const DashboardHome = () => {
                                             key={alert.id}
                                         >
                                             <td className="px-6 py-4 ">
-                                                {formatDateString(alert.date)} - {alert.heure}
+                                                {formatDateString(alert.date)} -{' '}
+                                                {alert.heure}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <span
@@ -86,7 +94,7 @@ const DashboardHome = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <ButtonGenerateLogs/>
+                        <ButtonGenerateLogs />
                     </div>
                 </div>
             </div>

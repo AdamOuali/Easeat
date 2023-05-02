@@ -9,7 +9,6 @@ const Profiles = () => {
 
     // Récupérer la liste des profils au chargement de la page (dépendance?)
     useEffect(() => {
-        console.log('pop')
         fetch('http://localhost:3000/api/users')
             .then((response) => {
                 console.log(response)

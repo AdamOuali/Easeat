@@ -44,13 +44,6 @@ const AddProfile = () => {
             // alert('Les deux mots de passe ne sont pas identiques.')
             return
         }
-        console.log({
-            lastName,
-            password,
-            confirmedPassword,
-            timeToCook,
-            foodType,
-        })
         try{
             createNewUser(lastName, password, timeToCook, foodType)
             setSubmittedForm(true)
