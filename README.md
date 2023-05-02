@@ -3,7 +3,7 @@
 Bienvenue!
 "Easeat" est un projet qui vise à fournir un dashboard permettant de surveiller l'état de votre frigo selon le profil sélectionné.
 
-# Installation
+## Installation
 
 Voici les étapes à suivre pour installer et exécuter le projet "Easeat" :
 
@@ -13,14 +13,11 @@ Voici les étapes à suivre pour installer et exécuter le projet "Easeat" :
 - Placez-vous dans le répertoire racine : `cd ./Easeat`
 - Puis téléchargez les dépendances nécessaires : `npm install`
 
-Une fois l'application lancée, vous verrez une interface utilisateur qui vous permettra de sélectionner le profil de votre choix pour votre frigo. Vous pouvez sélectionner différents profils tels que "Végétarien", "Carnivore" ou "Végan". L'application affichera alors une liste d'aliments recommandés pour votre profil et leur durée de conservation. Vous pourrez également visualiser l'état actuel de votre frigo, tels que la température, le niveau d'humidité et la date d'expiration des aliments.
+Une fois toutes les dépendances installées, lancez la commande suivante vous permettant de lancer le back et le front en même temps (et donc l'ensemble du projet) : `npm run-script easeat`
 
-Contribution
-Le projet "Easeat" est un projet open source et nous encourageons les contributions de la communauté. Si vous souhaitez contribuer, vous pouvez créer une nouvelle branche depuis la branche principale du projet, faire vos modifications et créer une demande de fusion (pull request). Nous évaluerons alors votre contribution et la fusionnerons avec la branche principale si elle est acceptée.
+Une fois l'application lancée, vous pourrez accéder à l'interface web à l'URL notée dans le terminal. Si votre port n'est pas réservé par défaut, l'url d'accès est la suivante : `http://localhost:5173/`.
+De plus le back tourne sur le port 3000. Il est donc accessible depuis l'url d'accès suivante : `http://localhost:3000/api/<endpoint>`.
 
-Licence
-Le projet "Easeat" est sous licence MIT. Veuillez consulter le fichier LICENSE pour plus d'informations.
+## Documentation API
 
-```
-
-```
+La documentation de l'API est disponible [ici](https://documenter.getpostman.com/view/27176202/2s93eU3unF).
