@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar/Sidebar'
 import { NavLink } from 'react-router-dom'
 import imgFrigo from '../assets/img-frigo-1.jpg'
+import ButtonGenerateLogs from '../components/ButtonGenerateLogs/ButtonGenerateLogs'
 
 function checkColorOfAlert(alertType) {
     if (alertType === 'Alerte') {
@@ -44,7 +45,7 @@ const DashboardHome = () => {
                             src={imgFrigo}
                             alt="Image frigo actuelle"
                         />
-                        <div className="w-full h-96 px-4 py-5 bg-white rounded-lg shadow overflow-auto">
+                        <div className="w-full h-96 px-4 my-12 bg-white rounded-lg shadow overflow-auto">
                             <table className="w-full text-sm text-left">
                                 <thead className="text-xs uppercase">
                                     <tr>
@@ -85,6 +86,7 @@ const DashboardHome = () => {
                                 </tbody>
                             </table>
                         </div>
+                        <ButtonGenerateLogs/>
                     </div>
                 </div>
             </div>
