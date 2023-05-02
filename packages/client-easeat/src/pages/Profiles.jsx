@@ -7,12 +7,19 @@ import '../index.css'
 const Profiles = () => {
     const [profileList, setProfileList] = useState([])
 
-    // Récupérer la liste des profils
+    // Récupérer la liste des profils au chargement de la page (dépendance?)
     useEffect(() => {
+        console.log('pop')
         fetch('http://localhost:3000/api/users')
-            .then((response) => response.json())
+            .then((response) => {
+                console.log(response)
+                return response.json()
+            })
             .then((data) => {
                 setProfileList(data)
+            })
+            .catch((error) => {
+                console.error(error)
             })
     }, [])
 
@@ -22,15 +29,15 @@ const Profiles = () => {
         let myHeaders = new Headers()
         myHeaders.append('Content-Type', 'application/json')
         let bodyToSend = JSON.stringify({
-            "id": id
+            id: id,
         })
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: bodyToSend,
-            redirect: 'follow'
+            redirect: 'follow',
         }
-    
+
         fetch(`http://localhost:3000/api/users/delete`, requestOptions)
             .then((response) => response.json()) // Ajout de la méthode json() ici
             .then((data) => {
@@ -43,7 +50,9 @@ const Profiles = () => {
                     )
                     setProfileList(updatedProfileList)
                 } else {
-                    console.error('Erreur lors de la suppression de l\'utilisateur')
+                    console.error(
+                        "Erreur lors de la suppression de l'utilisateur"
+                    )
                 }
             })
             .catch((error) => console.error(error))

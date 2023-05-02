@@ -7,6 +7,7 @@ router.get("/", (req, res) => {
 	db.query("SELECT * FROM Utilisateurs", (err, result) => {
 		if (err) throw err;
 		res.json(result);
+		console.log("REQUÊTE FAITE : GET - Récupérer tous les utilisateurs");
 	});
 });
 
@@ -23,5 +24,10 @@ router.post("/delete", (req, res) => {
 		}
 	});
 });
+
+// POST - Ajouter un utilisateur
+// router.post("/add", (req, res) => {
+// 	const nom = req.body.nom;
+// 	const
 
 module.exports = router;
