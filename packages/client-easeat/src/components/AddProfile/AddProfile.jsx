@@ -2,6 +2,31 @@ import React, { useState } from 'react'
 import '../../index.css'
 import Sidebar from '../Sidebar/Sidebar'
 
+function createNewUser(lastName, password, timeToCook, foodType) {
+    var myHeaders = new Headers()
+    myHeaders.append('Content-Type', 'application/json')
+
+    var raw = JSON.stringify({
+        nom: lastName,
+        password: password,
+        type_droit: 'standard',
+        timeToCook: timeToCook,
+        foodType: foodType,
+    })
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+    }
+
+    fetch('http://localhost:3000/api/users/add', requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.log('error', error))
+}
+
 const AddProfile = () => {
     const [lastName, setLastName] = useState('')
     const [password, setPassword] = useState('')
@@ -10,6 +35,7 @@ const AddProfile = () => {
     const [foodType, setFoodType] = useState('')
 
     const [pwAreSame, setPwAreSame] = useState(true)
+    const [submittedForm, setSubmittedForm] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,6 +51,14 @@ const AddProfile = () => {
             timeToCook,
             foodType,
         })
+        try{
+            createNewUser(lastName, password, timeToCook, foodType)
+            setSubmittedForm(true)
+        }
+        catch(error){
+            alert('DEBUG : Erreur lors de la création du profil')
+            console.log(error)
+        }
     }
 
     return (
@@ -52,8 +86,9 @@ const AddProfile = () => {
                                     setLastName(event.target.value)
                                 }
                                 autoComplete="username"
-                                onInput={(event) => event.target.setCustomValidity('')}
-
+                                onInput={(event) =>
+                                    event.target.setCustomValidity('')
+                                }
                                 required
                             />
                         </div>
@@ -74,7 +109,6 @@ const AddProfile = () => {
                                     setPassword(event.target.value)
                                 }
                                 autoComplete="current-password"
-
                                 required
                             />
                         </div>
@@ -160,11 +194,11 @@ const AddProfile = () => {
                                 <button
                                     type="button"
                                     className={`rounded-full w-8 h-8 mr-2 focus:outline-none ${
-                                        foodType === 'vegetarian'
-                                            ? 'bg-blue-700'
+                                        foodType === 'vegetarien'
+                                            ? 'bg-primary'
                                             : 'bg-gray-300'
                                     }`}
-                                    onClick={() => setFoodType('vegetarian')}
+                                    onClick={() => setFoodType('vegetarien')}
                                 >
                                     🥕
                                 </button>
@@ -200,8 +234,11 @@ const AddProfile = () => {
                                 Valider
                             </button>
                         </div>
+                        <h2 className={`mt-5 text-2xl font-bold text-center ${submittedForm ? "text-green-700" : "hidden"}`}> Utilisateur créé !</h2>
+
                     </form>
                 </div>
+
             </div>
         </>
     )

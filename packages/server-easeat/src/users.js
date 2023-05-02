@@ -26,8 +26,21 @@ router.post("/delete", (req, res) => {
 });
 
 // POST - Ajouter un utilisateur
-// router.post("/add", (req, res) => {
-// 	const nom = req.body.nom;
-// 	const
+// nom password type_droit timeToCook foodType
+router.post("/add", (req, res) => {
+	const nom = req.body.nom;
+	const password = req.body.password;
+	const type_droit = req.body.type_droit;
+	const timeToCook = req.body.timeToCook;
+	const foodType = req.body.foodType;
+	db.query(
+		`INSERT INTO Utilisateurs (nom, password, type_droit, timeToCook, foodType) VALUES ('${nom}', '${password}', '${type_droit}', '${timeToCook}', '${foodType}')`,
+		(err, result) => {
+			if (err) throw err;
+			res.json({ message: `Utilisateur ${nom} ajouté` });
+			console.log(`Utilisateur ${nom} ajouté`);
+		}
+	);
+});
 
 module.exports = router;
